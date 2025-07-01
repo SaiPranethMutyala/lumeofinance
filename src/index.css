@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --color-primary: #fd9e00;
+  --color-secondary: #fcba36;
+  --color-accent: #FFFFFF;
+  --color-light: #FFFFFF;
+  --color-white: #ffffff;
+}
+
+body, #root {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 50%, #FFFFFF 100%);
+  min-height: 100vh;
+  color: var(--color-primary);
+  will-change: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+}
+
+h1 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  line-height: 1.1;
+}
+h2 {
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+h3, h4, h5, h6 {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.text-light {
+  color: var(--color-light);
+}
+.text-white {
+  color: var(--color-white);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Optimized Animation Styles */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(60px) scale(0.98);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Simplified Animation Types */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blur-in {
+    filter: blur(4px);
+    transform: scale(1.02);
+    transition: filter 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: filter, transform;
+}
+
+.blur-in.visible {
+    filter: blur(0);
+    transform: scale(1);
+}
+
+/* Remove .global-bg-wrapper and section background override styles */
+
+.app-content {
+  flex: 1 0 auto;
+}
+
+footer, .footer {
+  flex-shrink: 0;
+  background: #ea580c;
+}
