@@ -8,6 +8,8 @@ import Team from './pages/Team';
 import TheStory from './pages/TheStory';
 import Footer from './components/Footer';
 import Loginpage from './components/Loginpage';
+import PrivacyPolicy from './components/PrivacyPolicy';
+// import 
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -16,12 +18,13 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Loginpage />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Loginpage />} />
           <Route path="/homepage" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
           <Route path="/products" element={<ProtectedRoute><Products /></ProtectedRoute>} />
           <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
           <Route path="/story" element={<ProtectedRoute><TheStory /></ProtectedRoute>} />
+          <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
         </Routes>
         <Footer />
       </div>

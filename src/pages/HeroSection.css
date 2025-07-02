@@ -308,4 +308,112 @@
 @keyframes sparkleTwinkle {
   0%, 100% { opacity: 0.7; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.3) rotate(10deg); }
+}
+
+/* Utility and responsive rules from HeroSection.js */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+
+.intro-text {
+  margin-left: 104px;
+}
+.hero-content h1 {
+  margin-left: 104px;
+}
+.hero-section {
+  padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    height: auto;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+  .hero-content {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 16px;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .hero-content h1, .intro-text {
+    margin-left: 0 !important;
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .hero-phone-animate {
+    margin-right: 0 !important;
+    justify-content: center !important;
+    max-width: 100vw !important;
+    padding-top: 8px;
+    display: flex !important;
+    align-items: center;
+    height: auto !important;
+  }
+  .hero-phone-animate img {
+    max-width: 90vw !important;
+    height: auto !important;
+    margin: 0 auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #ffeedd !important;
+    border: 2px solid red !important;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .intro-text {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 0 12px;
+  }
+  .hero-phone-animate img {
+    max-width: 70vw !important;
+    height: auto !important;
+    margin: 0 auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #ffeedd !important;
+    border: 2px solid red !important;
+  }
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+  .intro-text {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 400px) {
+  .hero-content h1 {
+    font-size: 1.1rem;
+  }
+  .intro-text {
+    font-size: 0.8rem;
+  }
+  .hero-phone-animate img {
+    max-width: 60vw !important;
+    height: auto !important;
+    margin: 0 auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #ffeedd !important;
+    border: 2px solid red !important;
+  }
 } 

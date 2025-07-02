@@ -42,13 +42,14 @@ const TryCleoSection = ({ active = true }) => {
       style={{
         background: 'linear-gradient(135deg, #FFF4E0 0%, #fdfaf6 50%, #FFF4E0 100%)',
         minHeight: '70vh',
-        width: '100vw',
+        width: '100%',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
         padding: '60px 0',
+        boxSizing: 'border-box',
       }}
     >
       {/* Animated Background Accent */}
@@ -173,7 +174,7 @@ const TryCleoSection = ({ active = true }) => {
           position: 'fixed',
           top: 0,
           left: 0,
-          width: '100vw',
+          width: '100%',
           height: '100vh',
           background: 'rgba(0,0,0,0.35)',
           display: 'flex',
@@ -183,6 +184,7 @@ const TryCleoSection = ({ active = true }) => {
           pointerEvents: 'auto',
           margin: 0,
           padding: 0,
+          boxSizing: 'border-box',
         }} onClick={() => setShowModal(false)}>
           <div style={{
             background: '#fff',
@@ -204,7 +206,7 @@ const TryCleoSection = ({ active = true }) => {
         document.body
       )}
 
-      <style>{`
+      <style jsx>{`
         @keyframes float {
           0%, 100% { 
             transform: translateY(0) translateX(0) rotate(0deg);

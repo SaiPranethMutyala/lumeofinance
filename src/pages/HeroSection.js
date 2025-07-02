@@ -283,7 +283,7 @@ const HeroSection = ({ animatedText = [], active = true, shouldDockPhone = false
         />
       </div>
 
-      <style>{`
+      <style jsx>{`
         .hero-section {
           display: flex;
           align-items: center;

@@ -46,9 +46,10 @@ const MoneyTalksSection = ({ active, isTransitioning, transitionType, transition
       scrollSnapAlign: 'start',
       minHeight: '100vh',
       height: '100vh',
-      width: '100vw',
+      width: '100%',
       overflow: 'hidden',
       position: 'relative',
+      boxSizing: 'border-box',
     }}>
       {/* Frame container that shrinks during transition */}
       <div
@@ -58,7 +59,7 @@ const MoneyTalksSection = ({ active, isTransitioning, transitionType, transition
           top: '50%',
           left: '50%',
           transform: `translate(-50%, -50%) scale(${scale})`,
-          width: `calc(100vw - ${framePadding * 2}px)`,
+          width: `calc(100% - ${framePadding * 2}px)`,
           height: `calc(100vh - ${framePadding * 2}px)`,
           maxWidth: '1800px',
           maxHeight: '1200px',
@@ -116,7 +117,8 @@ const MoneyTalksSection = ({ active, isTransitioning, transitionType, transition
             textAlign: 'left',
             marginLeft: '-40px',
           }}>
-            <h2>Budgets got Cancelled.</h2>
+            <h2>Budgets got <h2>
+              </h2>Cancelled.</h2>
             <h2>Lumeo replaced it</h2>
           </div>
         </div>

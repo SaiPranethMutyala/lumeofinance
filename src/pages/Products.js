@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import './Products.css';
 import FAQ from './FAQ';
 
 const Products = () => {
   useScrollAnimation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="products-page">
@@ -49,12 +59,13 @@ const Products = () => {
 
   
 
-      <div className="smarter-budgeting-section animate-on-scroll fade-in-up" style={{background: 'none', padding: '80px 0'}}>
+      <div className="smarter-budgeting-section animate-on-scroll fade-in-up" style={{
+        background: 'none', padding: '80px 0', marginTop: '-80px'}}>
         <h2 style={{
           fontSize: '3.2rem',
           fontWeight: 900,
           color: '#F97316',
-          margin: '0 0 48px 80px',
+          margin: '-64px 0 24px 80px',
           lineHeight: 1.08,
           letterSpacing: '-0.01em',
           textAlign: 'left',
@@ -64,58 +75,77 @@ const Products = () => {
         </h2>
         <div style={{
           display: 'flex',
-          
-          gap: '48px',
+          flexDirection: isMobile ? 'column' : 'row',
+          alignItems: isMobile ? 'stretch' : 'center',
+          gap: isMobile ? '24px' : '48px',
           maxWidth: '1400px',
           margin: '0 auto',
+          minHeight: isMobile ? 'auto' : '500px',
         }}>
-          <div className="image-content" style={{
-            flex: 1,
-            width: '800',
-            maxWidth: '800px',
-            height: '500px',
-            borderRadius: '32px',
-            backgroundImage: "url('/images/p2.PNG')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
-            marginTop: -20,
-          }} />
-          <div style={{
-            flex: 1,
-            width: '600',
-            maxWidth: '600px',
-            height: '370px',
-            background: '#fff',
-            borderRadius: '32px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
-            padding: '64px 56px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            minWidth: '400px',
-            maxHeight: 500,
-            marginTop: 0,
-          }}>
+          {!isMobile && (
+            <div className="image-content" style={{
+              flex: 1,
+              width: '1000px',
+              maxWidth: '1000px',
+              height: '600px',
+              borderRadius: '32px',
+              backgroundImage: "url('/images/p2.PNG')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
+              marginTop: -20,
+            }} />
+          )}
+          <div
+            style={{
+              flex: 1,
+              width: isMobile ? '100%' : '600',
+              maxWidth: isMobile ? '100%' : '600px',
+              height: isMobile ? 'auto' : '370px',
+              background: isMobile ? `url('/images/p2.PNG') center/cover no-repeat` : '#fff',
+              borderRadius: '32px',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
+              padding: isMobile ? '32px 12px' : '64px 56px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: isMobile ? 'center' : 'flex-start',
+              minWidth: isMobile ? '0' : '400px',
+              maxHeight: isMobile ? 'none' : 500,
+              marginTop: 0,
+              color: isMobile ? '#fff' : '#F97316',
+              position: 'relative',
+              zIndex: 1,
+              backgroundBlendMode: isMobile ? 'darken' : 'initial',
+              backgroundColor: isMobile ? 'rgba(0,0,0,0.35)' : '#fff',
+              textAlign: isMobile ? 'center' : 'left',
+            }}
+          >
             <h3 style={{
-              fontSize: '2.8rem',
+              fontSize: isMobile ? '2rem' : '2.8rem',
               fontWeight: 900,
-              color: '#F97316',
-              margin: 0,
+              color: isMobile ? '#fff' : '#F97316',
+              margin: isMobile ? '-32px 0 0 0' : '-48px 0 0 0',
+              textAlign: isMobile ? 'center' : 'left',
+              width: '100%',
+              alignSelf: isMobile ? 'center' : 'flex-start',
               lineHeight: 1.08,
               letterSpacing: '-0.01em',
-              textAlign: 'left',
+              textShadow: isMobile ? '0 2px 8px rgba(0,0,0,0.25)' : 'none',
             }}>
               All your money in one place.
             </h3>
             <p style={{
-              fontSize: '1.35rem',
-              color: '#F97316',
+              fontSize: isMobile ? '1.1rem' : '1.35rem',
+              color: isMobile ? '#fff' : '#F97316',
               margin: '28px 0 0 0',
               fontWeight: 400,
               lineHeight: 1.5,
-              textAlign: 'left',
+              textAlign: isMobile ? 'center' : 'left',
+              width: '100%',
+              alignSelf: isMobile ? 'center' : 'flex-start',
+              textShadow: isMobile ? '0 2px 8px rgba(0,0,0,0.18)' : 'none',
             }}>
               Connect all your banks, cards, and savings accounts. Lumeo automatically tracks what's coming in, what's going out, and what's left to spend.
             </p>
@@ -159,7 +189,7 @@ const Products = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
-            marginTop: '575px',
+            marginTop: '500px',
             marginLeft:-30,
           }}>
             <h1 style={{

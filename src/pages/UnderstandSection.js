@@ -40,7 +40,7 @@ const UnderstandSection = ({ active, isTransitioning, transitionType, transition
           top: '50%',
           left: '50%',
           transform: `translate(-50%, -50%) scale(${scale})`,
-          width: `calc(100vw - ${framePadding * 2}px)`,
+          width: `calc(100% - ${framePadding * 2}px)`,
           height: `calc(100vh - ${framePadding * 2}px)`,
           maxWidth: '1800px',
           maxHeight: '1200px',

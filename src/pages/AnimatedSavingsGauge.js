@@ -61,7 +61,7 @@ const AnimatedSavingsGauge = ({ active }) => {
   return (
     <div className="savings-gauge-container">
       <div className="savings-dropdown">Savings <span className="dropdown-arrow">▼</span></div>
-      <svg width="220" height="150" className="savings-gauge-svg">
+      <svg width="100%" height="100%" className="savings-gauge-svg">
         {/* Background semi-circle */}
         <path
           d={bgPath}

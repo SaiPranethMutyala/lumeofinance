@@ -62,15 +62,15 @@ const ChallengeSection = ({ active = true }) => {
 
   return (
     <div className="challenge-section">
-        <style>{`
+      <style jsx>{`
         .challenge-section {
           background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 50%, #FFFFFF 100%);
           min-height: 100vh;
-          width: 100vw;
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 0 10rem;
+          padding: 1rem;
           position: relative;
           box-sizing: border-box;
           overflow: hidden;
@@ -98,24 +98,22 @@ const ChallengeSection = ({ active = true }) => {
         .challenge-content-row {
           display: flex;
           width: 100%;
-          max-width: 1800px;
+          max-width: 1400px;
           align-items: center;
-          justify-content: space-between;
-          padding: 0;
-          box-sizing: border-box;
+          justify-content: center;
+          gap: 2rem;
           position: relative;
           z-index: 2;
         }
 
         .challenge-left {
-          flex: 1 1 45%;
+          flex: 1;
+          max-width: 600px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
           color: #44221c;
-          z-index: 2;
-          padding-left: 0;
           opacity: 0;
           transform: translateX(-60px);
           transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -127,10 +125,10 @@ const ChallengeSection = ({ active = true }) => {
         }
 
         .challenge-title {
-          font-size: 3.2rem;
+          font-size: clamp(2rem, 5vw, 3.2rem);
           font-weight: 800;
-          margin-bottom: 14px;
-          line-height: 1.08;
+          margin-bottom: 1rem;
+          line-height: 1.1;
           text-align: left;
           background: linear-gradient(135deg, #fd9e00, #f97316);
           -webkit-background-clip: text;
@@ -146,26 +144,23 @@ const ChallengeSection = ({ active = true }) => {
         }
 
         .challenge-sub {
-          font-size: 1.05rem;
+          font-size: clamp(0.9rem, 2.5vw, 1.05rem);
           background: linear-gradient(135deg, #fd9e00, #f97316);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          color: transparent;
-          margin-bottom: 14px;
+          margin-bottom: 1rem;
           opacity: 0;
           animation: ${leftAnimated ? 'fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.6s forwards' : 'none'};
         }
 
         .challenge-desc {
-          font-size: 0.98rem;
+          font-size: clamp(0.85rem, 2.2vw, 0.98rem);
           background: linear-gradient(135deg, #fd9e00, #f97316);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          color: transparent;
           margin-bottom: 0;
-          max-width: 420px;
           text-align: left;
           opacity: 0;
           animation: ${leftAnimated ? 'fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.9s forwards' : 'none'};
@@ -176,27 +171,13 @@ const ChallengeSection = ({ active = true }) => {
           100% { opacity: 1; transform: translateY(0); }
         }
 
-        .challenge-link {
-          color: #44221c;
-          font-weight: 700;
-          text-decoration: underline;
-          position: relative;
-          transition: all 0.3s ease;
-        }
-
-        .challenge-link:hover {
-          color: #fd9e00;
-          transform: translateY(-2px);
-        }
-
         .challenge-right {
-          flex: 1 1 55%;
+          flex: 1;
           display: flex;
           align-items: center;
-          justify-content: flex-end;
+          justify-content: center;
           position: relative;
-          min-width: 500px;
-          padding-right: 0;
+          min-height: 400px;
         }
 
         .challenge-cards-container {
@@ -211,7 +192,7 @@ const ChallengeSection = ({ active = true }) => {
           position: absolute;
           top: -80px;
           right: -20px;
-          // background: rgba(255, 255, 255, 0.95);
+          background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(20px);
           border-radius: 20px;
           padding: 20px;
@@ -222,6 +203,7 @@ const ChallengeSection = ({ active = true }) => {
           opacity: 0;
           transform: translateY(30px) rotate(3deg);
           animation: ${cardsAnimated ? 'cardFloatIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1s forwards' : 'none'};
+          min-width: 200px;
         }
 
         .challenge-overlay-card {
@@ -229,7 +211,7 @@ const ChallengeSection = ({ active = true }) => {
           left: -60px;
           top: 50%;
           transform: translateY(-50%) rotate(-2deg);
-          // background: rgba(253, 158, 0, 0.95);
+          background: rgba(253, 158, 0, 0.95);
           backdrop-filter: blur(20px);
           border-radius: 20px;
           padding: 20px;
@@ -240,13 +222,14 @@ const ChallengeSection = ({ active = true }) => {
           pointer-events: auto;
           opacity: 0;
           animation: ${cardsAnimated ? 'cardSlideIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.2s forwards' : 'none'};
+          min-width: 180px;
         }
 
         .challenge-progress-card {
           position: absolute;
           bottom: -40px;
           left: 40px;
-          // background: rgba(253, 158, 0, 0.95);
+          background: rgba(253, 158, 0, 0.95);
           backdrop-filter: blur(20px);
           border-radius: 20px;
           padding: 20px;
@@ -258,6 +241,7 @@ const ChallengeSection = ({ active = true }) => {
           opacity: 0;
           transform: translateY(-30px) rotate(1deg);
           animation: ${cardsAnimated ? 'cardBounceIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.4s forwards' : 'none'};
+          min-width: 180px;
         }
 
         @keyframes cardFloatIn {
@@ -293,14 +277,16 @@ const ChallengeSection = ({ active = true }) => {
 
         .challenge-image-wrapper {
           position: relative;
-          width: 700px;
-          height: 400px;
+          width: min(60vw, 500px);
+          height: min(40vw, 350px);
+          min-width: 280px;
+          min-height: 200px;
           border-radius: 28px;
           overflow: hidden;
           box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-          background: #eee;
+          background: linear-gradient(135deg, #fd9e00, #f97316);
           display: flex;
-          align-items: flex-end;
+          align-items: center;
           justify-content: center;
           opacity: ${active ? 1 : 0};
           transform: ${active ? 'translateX(0) scale(1) rotateY(0deg)' : 'translateX(80px) scale(0.9) rotateY(15deg)'};
@@ -324,23 +310,8 @@ const ChallengeSection = ({ active = true }) => {
           }
         }
 
-        .challenge-image {
-          width: 100%;
-          height: 100%;
-          border-radius: 28px;
-          display: block;
-          filter: brightness(1.1) contrast(1.05);
-          transition: filter 0.3s ease;
-          border: 2px solid red; /* Debug border */
-          background: #f0f0f0; /* Debug background */
-        }
-
-        .challenge-image:hover {
-          filter: brightness(1.2) contrast(1.1);
-        }
-
         .coffee-title {
-          font-size: 1.25rem;
+          font-size: clamp(1rem, 2.5vw, 1.25rem);
           font-weight: 800;
           display: block;
           margin-bottom: 6px;
@@ -348,7 +319,7 @@ const ChallengeSection = ({ active = true }) => {
         }
 
         .coffee-amount-row {
-          font-size: 2.3rem;
+          font-size: clamp(1.8rem, 4vw, 2.3rem);
           font-weight: 800;
           margin-bottom: 2px;
           display: flex;
@@ -357,19 +328,19 @@ const ChallengeSection = ({ active = true }) => {
         }
 
         .coffee-currency {
-          font-size: 1.2rem;
+          font-size: clamp(0.9rem, 2vw, 1.2rem);
           margin-right: 2px;
           animation: ${animatedSpent > 0 ? 'pulse 2s ease-in-out infinite' : 'none'};
         }
 
         .coffee-amount {
-          font-size: 2.3rem;
+          font-size: clamp(1.8rem, 4vw, 2.3rem);
           font-weight: 800;
           animation: ${animatedSpent > 0 ? 'numberCount 0.5s ease-out' : 'none'};
         }
 
         .coffee-cents {
-          font-size: 1.1rem;
+          font-size: clamp(0.8rem, 2vw, 1.1rem);
           margin-left: 1px;
         }
 
@@ -384,7 +355,7 @@ const ChallengeSection = ({ active = true }) => {
         }
 
         .coffee-sub, .coffee-remaining {
-          font-size: 1.05rem;
+          font-size: clamp(0.8rem, 2vw, 1.05rem);
           font-weight: 400;
           color: #666;
         }
@@ -444,40 +415,41 @@ const ChallengeSection = ({ active = true }) => {
         }
 
         .challenge-overlay-title {
-          font-size: 1.45rem;
+          font-size: clamp(1.1rem, 2.8vw, 1.45rem);
           font-weight: 800;
           display: block;
           margin-bottom: 8px;
         }
 
         .challenge-overlay-desc {
-          font-size: 1.08rem;
+          font-size: clamp(0.85rem, 2.2vw, 1.08rem);
           font-weight: 400;
           opacity: 0.9;
         }
 
         .challenge-progress-label {
-          font-size: 1.08rem;
+          font-size: clamp(0.9rem, 2.2vw, 1.08rem);
           font-weight: 700;
           margin-bottom: 8px;
         }
 
         .challenge-progress-days {
           display: flex;
-          gap: 10px;
+          gap: clamp(6px, 1.5vw, 10px);
           margin-top: 6px;
+          flex-wrap: wrap;
         }
 
         .day {
-          width: 26px;
-          height: 26px;
+          width: clamp(20px, 4vw, 26px);
+          height: clamp(20px, 4vw, 26px);
           display: inline-flex;
           align-items: center;
           justify-content: center;
           border-radius: 50%;
           background: rgba(255,255,255,0.2);
           color: #fff;
-          font-size: 1.08rem;
+          font-size: clamp(0.7rem, 2vw, 1.08rem);
           font-weight: 700;
           border: 2px solid rgba(255,255,255,0.2);
           transition: all 0.3s ease;
@@ -517,62 +489,78 @@ const ChallengeSection = ({ active = true }) => {
           box-shadow: 0 8px 24px rgba(253, 158, 0, 0.4);
         }
 
-        @media (max-width: 1300px) {
-          .challenge-image-wrapper {
-            width: 420px;
-            height: 220px;
-            border-radius: 16px;
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+          .challenge-section {
+            padding: 2rem 1.5rem;
+          }
+          
+          .challenge-content-row {
+            max-width: 100%;
+            gap: 3rem;
           }
           
           .challenge-coffee-card {
             top: -60px;
             right: -15px;
             padding: 16px;
+            min-width: 180px;
           }
           
           .challenge-overlay-card {
             left: -40px;
             padding: 16px;
+            min-width: 160px;
           }
           
           .challenge-progress-card {
             bottom: -30px;
             left: 30px;
             padding: 16px;
+            min-width: 160px;
           }
         }
 
-        @media (max-width: 1000px) {
+        /* Mobile Styles */
+        @media (max-width: 768px) {
           .challenge-section {
-            padding: 0 2rem;
+            padding: 1rem;
+            min-height: auto;
           }
           
           .challenge-content-row {
             flex-direction: column;
-            align-items: flex-start;
-            padding: 30px 10px;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
           }
           
-          .challenge-left,
-          .challenge-left-animate {
+          .challenge-left {
+            order: 1;
+            align-items: center;
+            text-align: center;
             opacity: 1;
             transform: none;
+            max-width: 100%;
+            width: 100%;
           }
           
           .challenge-right {
+            order: 2;
             width: 100%;
-            min-width: 0;
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-top: 2rem;
-            padding-right: 0;
-            justify-content: center;
+            gap: 1.5rem;
           }
           
           .challenge-image-wrapper {
-            width: 95vw;
-            max-width: 500px;
-            height: 300px;
-            border-radius: 14px;
+            width: min(90vw, 400px);
+            height: min(60vw, 280px);
+            position: relative;
+            z-index: 1;
+            order: 2;
           }
           
           .challenge-cards-container {
@@ -580,46 +568,124 @@ const ChallengeSection = ({ active = true }) => {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-bottom: 2rem;
             width: 100%;
             align-items: center;
             pointer-events: auto;
+            height: auto;
+            order: 1;
           }
           
           .challenge-coffee-card,
           .challenge-overlay-card,
           .challenge-progress-card {
             position: static;
-            width: 100%;
-            max-width: 400px;
+            width: min(90vw, 350px);
             margin: 0;
             opacity: 1;
             transform: none !important;
-            animation: none;
+            animation: none !important;
+            border-radius: 16px;
+            padding: 16px;
           }
           
           .challenge-progress-days {
-            gap: 8px;
             justify-content: center;
           }
           
+          .challenge-title {
+            font-size: clamp(1.1rem, 6vw, 1.6rem) !important;
+            padding: 0 1vw !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            background-clip: initial !important;
+            color: #44221c !important;
+            text-shadow: 0 1px 4px rgba(255,255,255,0.7) !important;
+            opacity: 1 !important;
+            animation: none !important;
+            transform: none !important;
+            display: block !important;
+            margin-top: 1rem !important;
+          }
+          .challenge-coffee-card {
+            display: none !important;
+          }
+        }
+
+        /* Small Mobile Styles */
+        @media (max-width: 480px) {
+          .challenge-section {
+            padding: 0.5rem;
+          }
+          
+          .challenge-content-row {
+            gap: 1.5rem;
+          }
+          
+          .challenge-right {
+            gap: 1rem;
+          }
+          
+          .challenge-image-wrapper {
+            width: 95vw;
+            height: 70vw;
+            max-height: 250px;
+            border-radius: 20px;
+          }
+          
+          .challenge-coffee-card,
+          .challenge-overlay-card,
+          .challenge-progress-card {
+            width: 95vw;
+            padding: 14px;
+            border-radius: 14px;
+          }
+          
+          .challenge-progress-days {
+            gap: 4px;
+          }
+          
           .day {
-            width: 24px;
-            height: 24px;
-            font-size: 0.9rem;
+            width: 22px;
+            height: 22px;
+            font-size: 0.75rem;
+          }
+        }
+
+        /* Large Desktop Styles */
+        @media (min-width: 1400px) {
+          .challenge-section {
+            padding: 2rem 4rem;
+          }
+          
+          .challenge-content-row {
+            max-width: 1600px;
+          }
+          
+          .challenge-image-wrapper {
+            width: min(50vw, 600px);
+            height: min(35vw, 400px);
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .challenge-coffee-card,
+          .challenge-overlay-card,
+          .challenge-progress-card {
+            background: transparent !important;
           }
         }
       `}</style>
       
-      <div className="challenge-content-row" style={{ marginLeft: '-140px' }}>
+      <div className="challenge-content-row">
         <div className={`challenge-left${leftAnimated ? ' challenge-left-animate' : ''}`}>
           <h1 className="challenge-title">Leave the money<br />math to Lumeo</h1>
           <p className="challenge-sub">Thinking about making a purchase?</p>
           <p className="challenge-desc">
-          Lumeo tracks your recurring bills and spending habits to recommend deals on all the products you love with perfect timing.<a></a>
+            Lumeo tracks your recurring bills and spending habits to recommend deals on all the products you love with perfect timing.
           </p>
         </div>
-        <div className="challenge-right" style={{ marginLeft: '40px' }}>
+        <div className="challenge-right">
           <div className="challenge-cards-container">
             <div className="challenge-coffee-card">
               <div className="coffee-title">Coffee challenge</div>
@@ -654,12 +720,12 @@ const ChallengeSection = ({ active = true }) => {
           <div className="challenge-image-wrapper">
             <img 
               src="/images/fullframe.jpeg" 
-              alt="Challenge visualization" 
+              alt="Challenge visualization"
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                borderRadius: '28px',
+                borderRadius: 'inherit',
                 display: 'block',
               }}
             />

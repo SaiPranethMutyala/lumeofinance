@@ -12,7 +12,7 @@ const AnswersSection = ({ active = true }) => {
         setIsVisible(true);
         setLeftAnimated(true);
         setImageAnimated(true);
-      }, 100);
+      }, 20);
       return () => clearTimeout(timer);
     } else {
       setIsVisible(false);
@@ -28,7 +28,7 @@ const AnswersSection = ({ active = true }) => {
         background: 'linear-gradient(135deg, #FFFFFF, #FFFFFF, #FFFFFF)',
         backgroundSize: '400% 400%',
         minHeight: '100vh',
-        width: '100vw',
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -109,7 +109,7 @@ const AnswersSection = ({ active = true }) => {
             color: '#44231a',
             zIndex: 2,
             opacity: 0,
-            paddingLeft: '10rem',
+            paddingLeft: window.innerWidth <= 1000 ? '0' : '6rem',
             transform: 'translateX(-40px) scale(0.97)',
             transition: 'all 0.9s cubic-bezier(0.23, 1, 0.32, 1) 0.2s',
             ...(leftAnimated && {
@@ -131,7 +131,7 @@ const AnswersSection = ({ active = true }) => {
               overflow: 'hidden',
               opacity: 0,
               transform: 'translateY(30px) scale(0.97)',
-              transition: 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.35s',
+              transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0.15s',
               ...(leftAnimated && {
                 opacity: 1,
                 transform: 'translateY(0) scale(1)',
@@ -197,7 +197,7 @@ const AnswersSection = ({ active = true }) => {
               maxWidth: '420px',
               opacity: 0,
               transform: 'translateY(30px) scale(0.97)',
-              transition: 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.55s',
+              transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0.25s',
               ...(leftAnimated && {
                 opacity: 1,
                 transform: 'translateY(0) scale(1)',
@@ -217,7 +217,7 @@ const AnswersSection = ({ active = true }) => {
               fontWeight: 600,
               opacity: 0,
               transform: 'translateY(30px) scale(0.97)',
-              transition: 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.7s',
+              transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0.35s',
               ...(leftAnimated && {
                 opacity: 1,
                 transform: 'translateY(0) scale(1)',
@@ -312,7 +312,7 @@ const AnswersSection = ({ active = true }) => {
         </div>
       </div>
 
-      <style>{`
+      <style jsx>{`
         @keyframes answers-bg-gradient {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }

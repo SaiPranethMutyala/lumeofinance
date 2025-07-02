@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { Navigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [productsDropdown, setProductsDropdown] = useState(false);
@@ -12,6 +11,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
+
     useEffect(() => {
         const handleScroll = () => {
             const isScrolled = window.scrollY > 10;
@@ -54,6 +54,7 @@ const Navbar = () => {
             setShowModal(true);
         }
     };
+
     const handleLogoClick = (e) => {
         e.preventDefault();
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -61,16 +62,16 @@ const Navbar = () => {
             navigate('/homepage');
         } else {
             navigate('/login');
-        }
-    };
+        }
+    };
 
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             {/* <div className="navbar-top-bar"></div> */}
             <div className="navbar-content">
-             <a href="#" className="navbar-logo" onClick={handleLogoClick}>
+                <a href="#" className="navbar-logo" onClick={handleLogoClick}>
                     <img src="/images/logo.png" alt="Lumeo Logo" />
-                </a>
+                </a>
                 
                 <div className={`navbar-links-container ${menuOpen ? 'open' : ''}`}>
                     <div className="navbar-center-links">
@@ -129,13 +130,14 @@ const Navbar = () => {
                     position: 'fixed',
                     top: 0,
                     left: 0,
-                    width: '100vw',
+                    width: '100%',
                     height: '100vh',
                     background: 'rgba(0,0,0,0.35)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    zIndex: 9999
+                    zIndex: 9999,
+                    boxSizing: 'border-box'
                 }} onClick={() => setShowModal(false)}>
                     <div style={{
                         background: '#fff',

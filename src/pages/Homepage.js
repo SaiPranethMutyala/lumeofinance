@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Homepage.css';
 import './HeroSection.css';
-import './FeaturesSection.css';
+// import './FeaturesSection.css';
 import './MoneyTalksSection.css';
 import './UnderstandSection.css';
 import './VerticalImageCarousel.css';
@@ -65,31 +65,31 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="homepage" style={{ height: '100vh', overflowY: 'scroll', scrollSnapType: 'y mandatory' }}>
+    <div className="homepage" style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
       {/* All sections rendered normally without fixed positioning */}
-      <div className="sections-container">
-        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+      <div className="sections-container" style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <HeroSection animatedText={simpleText} active={true} shouldDockPhone={featuresInView} />
         </div>
-        <div className="homepage-section animate-on-scroll" ref={featuresRef} style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+        <div className="homepage-section animate-on-scroll" ref={featuresRef} style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <FeaturesSection active={true} />
         </div>
-        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <MoneyTalksSection active={true} />
         </div>
-        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <UnderstandSection active={true} />
         </div>
-        <div className="homepage-section animate-on-scroll" ref={challengeRef} style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+        <div className="homepage-section animate-on-scroll" ref={challengeRef} style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <ChallengeSection active={challengeInView} />
         </div>
-        <div className="homepage-section animate-on-scroll" ref={answersRef} style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+        <div className="homepage-section animate-on-scroll" ref={answersRef} style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <AnswersSection active={answersInView} />
         </div>
-        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <CleoWorksSection active={true} />
         </div>
-        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: '100vh' }}>
+        <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <TryCleoSection active={true} />
         </div>
       </div>
