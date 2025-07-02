@@ -1,32 +1,29 @@
 .vertical-carousel {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
 .carousel-slide {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   transition: transform 0.8s cubic-bezier(.4,0,.2,1);
   will-change: transform;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 }
 
 .carousel-image {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   object-fit: cover;
   position: absolute;
   top: 0; left: 0;
   z-index: 1;
-  box-sizing: border-box;
 }
 
 .carousel-caption {
@@ -94,5 +91,5 @@
 @media (max-width: 700px) {
   .carousel-caption h2 { font-size: 1.5rem; }
   .carousel-caption p { font-size: 1rem; }
-  .carousel-caption { width: 95%; }
+  .carousel-caption { width: 95vw; }
 } 
