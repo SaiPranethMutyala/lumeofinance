@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = ({ solid }) => {
   const navigate = useNavigate();
   
   const handlePrivacyPolicy = () => {
@@ -20,6 +20,8 @@ const Footer = () => {
         color: '#fff',
         padding: '40px 20px 20px',
         textAlign: 'center',
+        position: 'relative',
+        zIndex: 2,
       }}
     >
       <footer>
