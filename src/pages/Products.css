@@ -1574,4 +1574,16 @@ m.products-page {
         height: 700px;
         min-height: 600px;
     }
+    .set-spending-limit-section h3,
+    .stay-ahead-section h3,
+    .get-real-answers-section h3,
+    .challenge-yourself-section h3 {
+        font-size: 3.25rem;
+    }
+    .set-spending-limit-section p,
+    .stay-ahead-section p,
+    .get-real-answers-section p,
+    .challenge-yourself-section p {
+        font-size: 1.5rem;
+    }
 } 

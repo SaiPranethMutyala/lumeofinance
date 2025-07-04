@@ -469,6 +469,11 @@ const HeroSection = ({ active = true, shouldDockPhone = false }) => {
           transform: translateY(40px);
           transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           margin-bottom: 8px;
+          background: linear-gradient(135deg, #fd9e00 0%, #f97316 50%, #ea580c 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          filter: drop-shadow(0 2px 4px rgba(253, 158, 0, 0.3));
         }
 
         .hero-line-visible {
@@ -497,13 +502,17 @@ const HeroSection = ({ active = true, shouldDockPhone = false }) => {
         .intro-text {
           font-size: ${isMobile ? '1.2rem' : isTablet ? '1.3rem' : '1.5rem'};
           font-weight: 400;
-          color: #6d3b2c;
+          background: linear-gradient(135deg, #fd9e00 0%, #f97316 50%, #ea580c 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin-bottom: 18px;
           letter-spacing: 0.01em;
           position: relative;
           margin-top: ${isMobile ? '0' : '170px'};
           margin-left: ${isMobile ? '0' : '104px'};
           text-align: ${isMobile ? 'center' : 'left'};
+          filter: drop-shadow(0 2px 4px rgba(253, 158, 0, 0.3));
         }
 
         .intro-text::after {
@@ -522,13 +531,17 @@ const HeroSection = ({ active = true, shouldDockPhone = false }) => {
           font-size: ${isMobile ? '2.2rem' : isTablet ? '2.8rem' : '3.2rem'};
           line-height: 1.1;
           font-weight: 800;
-          color: #4a2a1c;
+          background: linear-gradient(135deg, #fd9e00 0%, #f97316 50%, #ea580c 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin: 0;
           letter-spacing: -0.01em;
           position: relative;
           overflow: hidden;
           margin-left: ${isMobile ? '0' : '104px'};
           text-align: ${isMobile ? 'center' : 'left'};
+          filter: drop-shadow(0 2px 4px rgba(253, 158, 0, 0.3));
         }
 
         .highlight-text {

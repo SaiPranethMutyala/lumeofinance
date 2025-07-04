@@ -6,13 +6,16 @@ const useScrollAnimation = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, 50);
             observer.unobserve(entry.target);
           }
         });
       },
       {
         threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
       }
     );
 
@@ -22,7 +25,7 @@ const useScrollAnimation = () => {
     return () => {
       if (elementsToAnimate.length > 0) {
         elementsToAnimate.forEach((el) => {
-          if (el) { // Ensure element exists before unobserving
+          if (el) {
             observer.unobserve(el);
           }
         });

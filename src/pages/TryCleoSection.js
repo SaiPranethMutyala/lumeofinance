@@ -77,31 +77,6 @@ const TryCleoSection = ({ active = true }) => {
         }}
       />
 
-      {/* Floating Particles */}
-      {[...Array(12)].map((_, i) => (
-        <div
-          key={i}
-          className={`particle ${active && isVisible ? 'animate' : ''}`}
-          style={{
-            position: 'absolute',
-            width: `${Math.random() * 8 + 4}px`,
-            height: `${Math.random() * 8 + 4}px`,
-            background: '#f97316',
-            borderRadius: '50%',
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            opacity: 0,
-            transform: `translateY(50px) scale(0)`,
-            transition: `all ${1 + Math.random() * 0.5}s cubic-bezier(0.23, 1, 0.32, 1) ${Math.random() * 0.5}s`,
-            ...(active && isVisible && {
-              opacity: Math.random() * 0.6 + 0.2,
-              transform: `translateY(${-Math.random() * 30 - 10}px) scale(1)`,
-              animation: `float ${3 + Math.random() * 2}s ease-in-out infinite ${Math.random() * 2}s`,
-            })
-          }}
-        />
-      ))}
-
       {/* Main Content */}
       <div 
         className={`try-cleo-content ${active && isVisible ? 'animate' : ''}`}
@@ -176,21 +151,6 @@ const TryCleoSection = ({ active = true }) => {
       )}
 
       <style jsx>{`
-        @keyframes float {
-          0%, 100% { 
-            transform: translateY(0) translateX(0) rotate(0deg);
-          }
-          25% { 
-            transform: translateY(-20px) translateX(10px) rotate(90deg);
-          }
-          50% { 
-            transform: translateY(-35px) translateX(-5px) rotate(180deg);
-          }
-          75% { 
-            transform: translateY(-15px) translateX(-15px) rotate(270deg);
-          }
-        }
-
         @keyframes titleGlow {
           0%, 100% {
             text-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);

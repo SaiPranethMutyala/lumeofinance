@@ -71,12 +71,7 @@ const AnswersSection = ({ active = true }) => {
       style={{
         background: 'linear-gradient(135deg, #FFFFFF, #FFFFFF, #FFFFFF)',
         backgroundSize: '400% 400%',
-        minHeight: getResponsiveValue('100vh', '100vh', 'auto'),
         width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: getResponsiveValue('2rem 0', '4rem 0', '3.5rem 0'),
         margin: '0 !important',
         position: 'relative',
         boxSizing: 'border-box',
@@ -114,30 +109,7 @@ const AnswersSection = ({ active = true }) => {
       />
 
       {/* Floating Particles - not rendered on phones */}
-      {!isMobile &&
-        [...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            style={{
-              position: 'absolute',
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
-              background: 'rgba(68, 35, 26, 0.3)',
-              borderRadius: '50%',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: 0,
-              transform: 'translateY(20px) scale(0)',
-              transition: `all ${1 + Math.random() * 0.5}s cubic-bezier(0.23, 1, 0.32, 1) ${Math.random() * 0.5}s`,
-              ...(isVisible && {
-                opacity: Math.random() * 0.6 + 0.2,
-                transform: 'translateY(0) scale(1)',
-                animation: `particleFloat ${3 + Math.random() * 2}s ease-in-out infinite ${Math.random() * 1}s`,
-              })
-            }}
-          />
-        ))
-      }
+      {/* Removed particles for content stability */}
 
       <div 
         className="answers-content-row"
