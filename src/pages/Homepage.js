@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Homepage.css';
-import './HeroSection.css';
+// import './HeroSection.css';
 // import './FeaturesSection.css';
 import './MoneyTalksSection.css';
 import './UnderstandSection.css';
@@ -69,7 +69,7 @@ const Homepage = () => {
       {/* All sections rendered normally without fixed positioning */}
       <div className="sections-container" style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
         <div className="homepage-section animate-on-scroll" style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
-          <HeroSection animatedText={simpleText} active={true} shouldDockPhone={featuresInView} />
+          <HeroSection active={true} shouldDockPhone={featuresInView} />
         </div>
         <div className="homepage-section animate-on-scroll" ref={featuresRef} style={{ scrollSnapAlign: 'start', minHeight: 0 }}>
           <FeaturesSection active={true} />

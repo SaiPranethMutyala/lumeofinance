@@ -75,32 +75,23 @@ const CleoWorksSection = ({ active = true }) => {
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '60vh',
+        height: '100vh',
         width: '100%',
+        padding: 0,
       }}>
-        <h1 style={{
-          fontSize: '7rem',
-          fontWeight: 900,
-          margin: -50,
-          lineHeight: 1.04,
-          color: '#fff',
-          letterSpacing: '-0.01em',
-          textAlign: 'left',
-          whiteSpace: 'pre-line',
-        }}>
+        <h1 
+          className="cleo-works-title"
+        >
           Lumeo saves for you<br/>
-          <span style={{ display: 'inline-block', marginLeft: '5.5ch' }}>(not ur parents)</span>
+          <span 
+            className="cleo-works-title-sub"
+          >(not ur parents)</span>
         </h1>
-        <p style={{
-          fontSize: '1.1rem',
-          fontWeight: 400,
-          margin: '48px 0 0 50ch',
-          color: '#fff',
-          maxWidth: '700px',
-          textAlign: 'left',
-        }}>
+        <p 
+          className="cleo-works-desc"
+        >
           <br/>In other words, lumeo saves your way, not theirs— <br/> always helping you hit money goals and live life your way.
         </p>
       </div>
@@ -316,31 +307,119 @@ const CleoWorksSection = ({ active = true }) => {
 
         @media (max-width: 900px) {
           .cleo-works-section {
-            padding: 32px 0 24px 0 !important;
-            max-width: 100vw !important;
+            padding: 48px 0 30px 0;
+            max-width: 100vw;
           }
-          .cleo-works-content h2 {
-            font-size: 2.2rem !important;
+          .cleo-works-title {
+            font-size: clamp(2rem, 8vw, 3.2rem);
           }
-          .cleo-works-section img {
-            max-width: 120px !important;
-            max-height: 80px !important;
-            border-radius: 10px !important;
+          .cleo-works-title-sub {
+            font-size: clamp(1.2rem, 5vw, 2rem);
           }
+          .cleo-works-desc {
+            font-size: clamp(1.05rem, 4vw, 1.2rem);
+            text-align: center;
+            margin: 0.7em 0 0 0;
+            max-width: 98vw;
+          }
+          .cleo-img {
+            max-width: 120px;
+            max-height: 80px;
+            border-radius: 10px;
+          }
+          .cleo-img--top-left { top: 4%; left: 2%; }
+          .cleo-img--top-right { top: 2%; right: 4%; }
+          .cleo-img--bottom-left { bottom: 2%; left: 8%; }
+          .cleo-img--bottom-right { bottom: 6%; right: 2%; }
         }
 
         @media (max-width: 600px) {
           .cleo-works-section {
-            padding: 24px 0 16px 0 !important;
+            padding: 24px 0 16px 0;
           }
           .cleo-works-content {
-            max-width: 98vw !important;
-            padding: 0 2vw !important;
+            max-width: 98vw;
+            padding: 0 2vw;
+          }
+          .cleo-img {
+            max-width: 120px;
+            max-height: 70px;
+            border-radius: 10px;
           }
           .cleo-works-section img {
-            max-width: 70px !important;
-            max-height: 40px !important;
-            border-radius: 6px !important;
+            max-width: 120px !important;
+            max-height: 70px !important;
+            border-radius: 10px !important;
+          }
+          .cleo-works-title {
+            font-size: clamp(1.5rem, 10vw, 2.5rem);
+          }
+          .cleo-works-title-sub {
+            font-size: clamp(1.1rem, 7vw, 1.7rem);
+          }
+          .cleo-works-desc {
+            font-size: clamp(1.1rem, 5vw, 1.3rem);
+            text-align: center;
+            margin: 0.5em 0 0 0;
+            max-width: 99vw;
+          }
+        }
+
+        .cleo-works-title {
+          font-size: clamp(2.2rem, 7vw, 5rem);
+          font-weight: 900;
+          margin: 0 0 0.2em 0;
+          line-height: 1.04;
+          color: #fff;
+          letter-spacing: -0.01em;
+          text-align: center;
+          white-space: pre-line;
+          word-break: break-word;
+        }
+        .cleo-works-title-sub {
+          display: inline-block;
+          margin-left: 2ch;
+          font-size: clamp(1.1rem, 3vw, 2.2rem);
+        }
+        .cleo-works-desc {
+          font-size: clamp(1rem, 2.8vw, 1.3rem);
+          font-weight: 400;
+          margin: 1em 0 0 0;
+          color: #fff;
+          max-width: 700px;
+          text-align: center;
+          word-break: break-word;
+        }
+        @media (max-width: 900px) {
+          .cleo-works-title {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            text-align: center;
+          }
+          .cleo-works-title-sub {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            margin-left: 1ch;
+          }
+          .cleo-works-desc {
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            text-align: center;
+            margin: 1.2em 0 0 0;
+            max-width: 98vw;
+          }
+        }
+        @media (max-width: 600px) {
+          .cleo-works-title {
+            font-size: clamp(1.1rem, 8vw, 1.5rem);
+            text-align: center;
+          }
+          .cleo-works-title-sub {
+            font-size: clamp(0.9rem, 5vw, 1.1rem);
+            margin-left: 0.5ch;
+          }
+          .cleo-works-desc {
+            font-size: clamp(0.85rem, 4vw, 1rem);
+            text-align: center;
+            margin: 1em 0 0 0;
+            max-width: 99vw;
           }
         }
       `}</style>
