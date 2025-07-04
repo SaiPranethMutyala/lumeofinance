@@ -70,14 +70,14 @@ const MoneyTalksSection = ({ active, isTransitioning, transitionType, transition
             : '0 4px 32px rgba(0,0,0,0.07)',
           transition: transitionProgress ? 'none' : 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           zIndex: shouldShowBackground ? 1 : -1,
-          background: 'transparent',
+          background: 'linear-gradient(135deg, #ffb347 0%, #ffcc80 100%)', // orange fallback background
           opacity: shouldShowBackground ? 1 : 0,
           visibility: shouldShowBackground ? 'visible' : 'hidden'
         }}
       >
         {/* Background image that fills the frame */}
         <div
-          className={`money-talks-background${contentVisible ? ' money-talks-bg-animate' : ''}`}
+          className="money-talks-background"
           style={{
             position: 'absolute',
             top: 0,

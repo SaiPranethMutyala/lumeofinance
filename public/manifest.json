@@ -1,25 +1,30 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Lumeo",
+  "name": "Lumeo - AI Social Finance Sidekick",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icon_40x40.png",
+      "type": "image/png",
+      "sizes": "40x40"
     },
     {
-      "src": "logo192.png",
+      "src": "icon_29x29.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "29x29"
     },
     {
-      "src": "logo512.png",
+      "src": "icon_40x40.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "32x32"
+    },
+    {
+      "src": "icon_29x29.png",
+      "type": "image/png",
+      "sizes": "16x16"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#fd9e00",
   "background_color": "#ffffff"
 }

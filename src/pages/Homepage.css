@@ -7,8 +7,6 @@ html, body, .homepage, .sections-container, .homepage-section {
 
 .homepage {
   position: relative;
-  /* overflow: hidden; */
-  /* height: 100vh; */
   width: 100%;
   background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
   will-change: auto;
@@ -16,10 +14,10 @@ html, body, .homepage, .sections-container, .homepage-section {
   padding: 0;
   top: 0;
   left: 0;
-  /* Ensure wheel events can be captured */
   pointer-events: auto;
   user-select: none;
   -webkit-user-select: none;
+  scroll-behavior: smooth;
 }
 
 /* Ensure body and html don't interfere with homepage scrolling */
@@ -27,29 +25,32 @@ body.homepage-active {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  /* Ensure wheel events can be captured */
   pointer-events: auto;
+  scroll-behavior: smooth;
 }
 
 html.homepage-active {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  /* Ensure wheel events can be captured */
   pointer-events: auto;
+  scroll-behavior: smooth;
 }
 
 .sections-container {
   width: 100%;
-  /* height: 100vh; */
   position: relative;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform-style: preserve-3d;
-  transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .homepage-section {
@@ -58,30 +59,68 @@ html.homepage-active {
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  height: 100vh;
   position: relative;
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 1;
   transform: scale(1) translateY(0);
   will-change: opacity, transform;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
 }
 
-.homepage-section.section-inactive {
-  opacity: 0;
-  transform: scale(0.95) translateY(20px);
-  filter: blur(2px);
-  visibility: hidden;
+/* Ensure proper stacking order */
+.homepage-section:nth-child(1) { z-index: 8; }
+.homepage-section:nth-child(2) { z-index: 7; }
+.homepage-section:nth-child(3) { z-index: 6; }
+.homepage-section:nth-child(4) { z-index: 5; }
+.homepage-section:nth-child(5) { z-index: 4; }
+.homepage-section:nth-child(6) { z-index: 3; }
+.homepage-section:nth-child(7) { z-index: 2; }
+.homepage-section:nth-child(8) { z-index: 1; }
+
+/* Smooth transitions between sections */
+.homepage-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* When section is partially visible, maintain background */
+.homepage-section.section-entering {
+  opacity: 0.8;
+  transform: scale(0.98) translateY(10px);
+  z-index: 10;
 }
 
 .homepage-section.section-active {
   opacity: 1;
   transform: scale(1) translateY(0);
-  filter: blur(0);
+  z-index: 10;
+}
+
+.homepage-section.section-exiting {
+  opacity: 0.6;
+  transform: scale(0.95) translateY(-10px);
+}
+
+/* Ensure all sections remain visible during scroll */
+.homepage-section {
   visibility: visible !important;
 }
 
-/* Ensure active sections are always visible */
-.homepage-section.section-active * {
+.homepage-section * {
   visibility: visible !important;
 }
 
@@ -105,7 +144,7 @@ html.homepage-active {
   margin: 8px 0;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
 }
@@ -118,7 +157,7 @@ html.homepage-active {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.6s ease;
+  transition: left 0.3s ease;
 }
 
 .side-dots li:hover {
@@ -175,7 +214,7 @@ html.homepage-active {
   background: linear-gradient(180deg, #f97316, #ea580c);
   border-radius: 2px;
   box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
-  transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
 }
 
@@ -190,219 +229,119 @@ html.homepage-active {
   border-radius: 2px;
 }
 
-/* Mobile responsive adjustments */
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
+  .homepage-section {
+    min-height: 90vh;
+  }
+  
+  .side-dots {
+    right: 20px;
+  }
+  
+  .scroll-progress {
+    left: 15px;
+  }
+}
+
 @media (max-width: 900px) {
   .side-dots li {
     width: 5px;
     height: 5px;
     margin: 6px 0;
   }
-}
-
-/* Enhanced transition animations with smooth effects */
-
-/* Smooth slide transitions */
-.sections-container[data-transition-type="slide-horizontal"] .homepage-section {
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Enhanced hero-features transitions */
-.sections-container[data-transition-type="hero-to-features"] .homepage-section[data-section-index="0"] {
-  animation: heroExitSmooth 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.sections-container[data-transition-type="hero-to-features"] .homepage-section[data-section-index="1"] {
-  animation: featuresEnterSmooth 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.sections-container[data-transition-type="features-to-hero"] .homepage-section[data-section-index="1"] {
-  animation: featuresExitSmooth 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.sections-container[data-transition-type="features-to-hero"] .homepage-section[data-section-index="0"] {
-  animation: heroEnterSmooth 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-/* Enhanced keyframe animations */
-@keyframes heroExitSmooth {
-  0% {
-    opacity: 1;
-    transform: scale(1) translateY(0) rotateY(0deg);
-    filter: blur(0);
+  
+  .homepage-section {
+    min-height: 85vh;
   }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.9) translateY(-30px) rotateY(-5deg);
-    filter: blur(1px);
+  
+  .side-dots {
+    right: 15px;
   }
-  100% {
-    opacity: 0;
-    transform: scale(0.8) translateY(-50px) rotateY(-10deg);
-    filter: blur(2px);
+  
+  .scroll-progress {
+    left: 10px;
+    width: 3px;
   }
 }
 
-@keyframes featuresEnterSmooth {
-  0% {
-    opacity: 0;
-    transform: scale(1.1) translateY(50px) rotateY(10deg);
-    filter: blur(2px);
+@media (max-width: 768px) {
+  .homepage-section {
+    min-height: 80vh;
   }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.05) translateY(20px) rotateY(5deg);
-    filter: blur(1px);
+  
+  .side-dots {
+    right: 10px;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0) rotateY(0deg);
-    filter: blur(0);
+  
+  .side-dots li {
+    width: 4px;
+    height: 4px;
+    margin: 5px 0;
   }
-}
-
-@keyframes featuresExitSmooth {
-  0% {
-    opacity: 1;
-    transform: scale(1) translateY(0) rotateY(0deg);
-    filter: blur(0);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.95) translateY(-20px) rotateY(5deg);
-    filter: blur(1px);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.9) translateY(-40px) rotateY(10deg);
-    filter: blur(2px);
+  
+  .scroll-progress {
+    left: 8px;
+    width: 2px;
   }
 }
 
-@keyframes heroEnterSmooth {
-  0% {
-    opacity: 0;
-    transform: scale(0.9) translateY(-40px) rotateY(10deg);
-    filter: blur(2px);
+@media (max-width: 480px) {
+  .homepage-section {
+    min-height: 75vh;
   }
-  50% {
-    opacity: 0.7;
-    transform: scale(0.95) translateY(-20px) rotateY(5deg);
-    filter: blur(1px);
+  
+  .side-dots {
+    right: 8px;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0) rotateY(0deg);
-    filter: blur(0);
+  
+  .side-dots li {
+    width: 3px;
+    height: 3px;
+    margin: 4px 0;
   }
-}
-
-/* Enhanced challenge-to-answers transition */
-.sections-container[data-transition-type="challenge-to-answers"] .homepage-section[data-section-index="4"] {
-  animation: challengeExitSmooth 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.sections-container[data-transition-type="challenge-to-answers"] .homepage-section[data-section-index="5"] {
-  animation: answersEnterSmooth 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes challengeExitSmooth {
-  0% {
-    opacity: 1;
-    transform: scale(1) rotateY(0deg) translateZ(0);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.8) rotateY(-15deg) translateZ(-50px);
-    filter: blur(3px);
+  
+  .scroll-progress {
+    left: 5px;
+    width: 2px;
   }
 }
 
-@keyframes answersEnterSmooth {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) rotateY(15deg) translateZ(-50px);
-    filter: blur(3px);
+/* Smooth scrolling for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .homepage {
+    -webkit-overflow-scrolling: touch;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotateY(0deg) translateZ(0);
-    filter: blur(0);
+  
+  .sections-container {
+    -webkit-overflow-scrolling: touch;
   }
-}
-
-/* Helper class to prevent text selection during transitions */
-.sections-container.transitioning {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-/* Enhanced transition effects with glow */
-.sections-container.transitioning .homepage-section {
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Smooth glow effect during transitions */
-.sections-container.transitioning::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(253, 158, 0, 0.1) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 10;
-  animation: transitionGlow 0.8s ease-in-out;
-}
-
-@keyframes transitionGlow {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
+  
+  .homepage-section {
+    -webkit-overflow-scrolling: touch;
   }
 }
 
-/* Enhanced section entrance animations */
-.homepage-section.section-active {
-  animation: sectionEntrance 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes sectionEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.95) translateY(20px);
-    filter: blur(2px);
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .homepage-section {
+    transition: none;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    filter: blur(0);
+  
+  .sections-container {
+    transition: none;
   }
-}
-
-/* Smooth background transition effect */
-.sections-container {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 50%, #FFFFFF 100%);
-  background-size: 200% 200%;
-  animation: backgroundShift 8s ease-in-out infinite;
-}
-
-@keyframes backgroundShift {
-  0%, 100% {
-    background-position: 0% 50%;
+  
+  .side-dots li {
+    transition: none;
   }
-  50% {
-    background-position: 100% 50%;
+  
+  .scroll-progress-bar {
+    transition: none;
   }
 }
 
+/* Animate sections based on scroll position */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(60px) scale(0.98);
@@ -414,4 +353,59 @@ html.homepage-active {
   transform: translateY(0) scale(1);
 }
 
+/* Additional background layers to prevent empty spaces */
+.homepage {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
+  min-height: 100vh;
+}
 
+.sections-container {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+/* Smooth section entrance animation */
+.homepage-section {
+  animation: sectionLoad 0.6s ease-out;
+}
+
+@keyframes sectionLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient overlay for smooth transitions */
+.homepage-section::after {
+  content: '';
+  position: absolute;
+  top: 80%;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Remove gradient from last section */
+.homepage-section:last-child::after {
+  display: none;
+}
+
+/* AnswersSection specific background (6th section) */
+.homepage-section:nth-child(6) {
+  background: linear-gradient(135deg, #f7fafc 0%, #e3e8ee 100%) !important;
+  position: relative;
+  z-index: 3;
+}
+
+/* Remove overlay for AnswersSection */
+.homepage-section:nth-child(6)::after {
+  display: none !important;
+}

@@ -131,4 +131,31 @@
     font-size: 1rem;
     padding: 12px 28px;
   }
+}
+
+@media (max-width: 600px) {
+  .try-cleo-section {
+    padding: 16px 0 16px 0;
+    min-height: 60vh;
+  }
+  .try-cleo-bg-accent {
+    width: 180px;
+    height: 120px;
+  }
+  .try-cleo-content {
+    max-width: 98vw;
+    padding: 0 2vw;
+  }
+  .try-cleo-content h2 {
+    font-size: 1.3rem;
+  }
+  .try-cleo-content p {
+    font-size: 0.95rem;
+    margin: 0 0 24px 0;
+  }
+  .try-cleo-btn {
+    font-size: 0.95rem;
+    padding: 10px 16px;
+    border-radius: 20px;
+  }
 } 

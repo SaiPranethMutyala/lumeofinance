@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from 'firebase/firestore';
 
-const GLOBAL_PASSWORD = '123'; // Change this to your actual global password
+const GLOBAL_PASSWORD = 'JULY2025'; 
 
 const Loginpage = () => {
   const [password, setPassword] = useState('');

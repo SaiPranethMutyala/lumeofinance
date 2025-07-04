@@ -675,6 +675,17 @@ const ChallengeSection = ({ active = true }) => {
             background: transparent !important;
           }
         }
+
+        @media (max-width: 900px) {
+          .challenge-section {
+            margin-top: 1rem;
+          }
+        }
+        @media (max-width: 600px) {
+          .challenge-section {
+            margin-top: 1rem;
+          }
+        }
       `}</style>
       
       <div className="challenge-content-row">

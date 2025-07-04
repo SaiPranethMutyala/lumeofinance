@@ -18,11 +18,11 @@ const Products = () => {
 
   return (
     <div className="products-page">
-      <div className="budget-your-way-section animate-on-scroll fade-in">
+      <div className="budget-your-way-section animate-on-scroll fade-in scale-in">
         <div className="budget-content">
           <h1>The Money<br />App.</h1>
           <div className="feature-box">
-            <ul>
+            <ul className="staggered-list">
               <li>Win all your money goals and your life</li>
               <li>Talk with Lumeo, your favorite finance friend</li>
               <li>Gamified saving challenges with leaderboards</li>
@@ -30,8 +30,8 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <div className="join-section animate-on-scroll fade-in">
-        <div className="stars">
+      <div className="join-section animate-on-scroll fade-in scale-in">
+        <div className="stars pulse">
             <span>★</span>
             <span>★</span>
             <span>★</span>
@@ -41,17 +41,11 @@ const Products = () => {
         <h3>Join the revolution. Join Lumeo.</h3>
         <p>
           Join lumeo on 
-                <button className="store-button">
-                {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style={{ marginRight: '8px', verticalAlign: 'middle' }} viewBox="0 0 16 16">
-                    <path d="M11.182.008C10.148-.03 9.05.235 8.058.715c-.992.48-1.803 1.228-2.494 2.06C4.823 3.687 4.157 4.597 4.015 5.586c-.143.989.358 2.053.97 2.83.613.776 1.48 1.346 2.414 1.638.934.292 1.928.24 2.84-.136.913-.377 1.715-.967 2.328-1.693.613-.726.98-1.63.98-2.588 0-.02-.002-.04-.002-.06a4.93 4.93 0 0 0-1.558-3.55C12.37.818 11.782.262 11.182.008ZM10.275 1.132c.571.492 1.024 1.21 1.024 1.956 0 .04-.002.08-.006.12a3.48 3.48 0 0 0-1.998-1.19c.744-.333 1.35-.37 1.998.114Z"/>
-                </svg> */}
+                <button className="store-button pop-on-hover">
                 App Store
             </button>
             and
-            <button className="store-button">
-                {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style={{ marginRight: '8px', verticalAlign: 'middle' }} viewBox="0 0 16 16">
-                    <path d="M14.222 9.374c1.037-.61.998-1.484-.048-1.708L2.92 1.713A2.5 2.5 0 0 0 .092 3.857v8.286a2.5 2.5 0 0 0 2.828 2.47l11.302-6.241ZM2.525 6.425l6.237 3.469-6.877 3.82a1.5 1.5 0 0 1-1.888-1.393V6.425Z"/>
-                </svg> */}
+            <button className="store-button pop-on-hover">
                 Google Store coming soon...
             </button>
         </p>
@@ -59,9 +53,9 @@ const Products = () => {
 
   
 
-      <div className="smarter-budgeting-section animate-on-scroll fade-in-up" style={{
+      <div className="smarter-budgeting-section animate-on-scroll fade-in-up scale-in" style={{
         background: 'none', padding: '80px 0', marginTop: '-80px'}}>
-        <h2 style={{
+        {/* <h2 style={{
           fontSize: '3.2rem',
           fontWeight: 900,
           color: '#F97316',
@@ -72,7 +66,7 @@ const Products = () => {
           marginLeft: 25
         }}>
           Finance that finally <br/> fits for real
-        </h2>
+        </h2> */}
         <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
@@ -83,7 +77,7 @@ const Products = () => {
           minHeight: isMobile ? 'auto' : '500px',
         }}>
           {!isMobile && (
-            <div className="image-content" style={{
+            <div className="image-content pop-on-hover" style={{
               flex: 1,
               width: '1000px',
               maxWidth: '1000px',
@@ -152,69 +146,15 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <div className="should-money-be-social-section animate-on-scroll fade-in" style={{
-        minHeight: '101vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        background: "url('/images/p69.PNG') center center / cover no-repeat",
-        margin: '48px 0',
-        textAlign: 'left',
-        boxShadow: '0 4px 32px rgba(255, 167, 38, 0.07)',
-        position: 'relative',
-        borderRadius: '40px',
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: '54%',
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'flex-start',
-          zIndex: 2,
-          padding: '0 0 0 64px',
-        }}>
-          <div style={{
-            background: 'linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0.32) 100%)',
-            backdropFilter: 'blur(18px)',
-            borderRadius: '40px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
-            padding: '32px 32px',
-            maxWidth: '500px',
-            width: '100%',
-            color: '#fff',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            marginTop: '500px',
-            marginLeft:-30,
-          }}>
-            <h1 style={{
-              fontSize: '2.2rem',
-              fontWeight: 900,
-              margin: 0,
-              color: '#fff',
-              lineHeight: 1.08,
-              letterSpacing: '-0.01em',
-              textAlign: 'left',
-              textShadow: '0 2px 12px rgba(0,0,0,0.18)',
-            }}>
+      <div className="should-money-be-social-section animate-on-scroll fade-in scale-in">
+        <div className="content-overlay">
+          <div className="content-card">
+            <h1>
               Should money be social?
             </h1>
-            <h2 style={{
-              fontSize: '1.25rem',
-              color: '#fff',
-              fontWeight: 400,
-              margin: '16px 0 0 0',
-              lineHeight: 1.4,
-              textAlign: 'left',
-              textShadow: '0 2px 8px rgba(0,0,0,0.12)',
-            }}>
-              Studies show users exposed to leaderboards saved 57% more.
-            </h2>
+            <p>
+              Lumeo lets you share, challenge, and learn with friends. See how your habits stack up, join group challenges, and celebrate wins together.
+            </p>
           </div>
         </div>
       </div>
@@ -411,92 +351,53 @@ Post wins, grow your following, and turn smarter money moves into social currenc
 
       <div className="security-section animate-on-scroll fade-in" style={{
         position: 'relative',
-        backgroundImage: "linear-gradient(90deg, rgba(247,179,122,0.92) 0%, rgba(247,214,178,0.92) 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80')",
+        backgroundImage: "linear-gradient(90deg, rgba(247,179,122,0.3) 0%, rgba(247,214,178,0.3) 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
-        padding: '80px 0',
+        padding: '200px 0',
+        minHeight: '90vh',
       }}>
         <h2 style={{ color: '#fff', fontSize: '3rem', fontWeight: 800, marginLeft: '8vw', marginBottom: '48px' }}>Security and Compliance</h2>
         <div className="security-glass-grid" style={{
           display: 'flex',
+
           gap: '32px',
           justifyContent: 'center',
-          flexWrap: 'nowrap',
-          overflowX: 'auto',
           margin: '0 auto',
-          maxWidth: '1200px',
+          maxWidth: '1600px',
+          width: '100vw',
         }}>
-          <div className="security-glass-card" style={{
-            background: 'rgba(255,255,255,0.13)',
-            borderRadius: '32px',
-            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            padding: '40px 32px',
-            minWidth: '320px',
-            maxWidth: '350px',
-            flex: '1 1 320px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          }}>
-            <div className="security-icon" style={{background: 'rgba(44,28,15,0.13)', borderRadius: '50%', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px'}}>
-              {/* Bank icon */}
-              <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="none"/><path d="M4 10h16M5 10V8.5A1.5 1.5 0 0 1 6.5 7h11A1.5 1.5 0 0 1 19 8.5V10m-2 4v2m-4-2v2m-4-2v2" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <div className="security-glass-card">
+            <div className="security-icon">
+              {/* Shield icon (Bank icon reused) */}
+              <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="none"/><path d="M4 10h16M5 10V8.5A1.5 1.5 0 0 1 6.5 7h11A1.5 1.5 0 0 1 19 8.5V10m-2 4v2m-4-2v2m-4-2v2" stroke="#ea580c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
-            <h3 style={{color: '#fff', fontSize: '2rem', fontWeight: 700, margin: '0 0 12px 0'}}>Bank-level 256-bit encryption</h3>
-            <p style={{color: '#fff', fontSize: '1.1rem', fontWeight: 400, margin: 0}}>Your bank login details are never stored.<br/><br/>When Cleo needs to connect to your bank, we use Plaid to securely transfer your data using the latest security technology.</p>
+            <h3>SOC 2 compliant</h3>
+            <p>Lumeo is built on industry-leading SOC 2 standards, so your privacy and security are always our top priority.</p>
           </div>
-          <div className="security-glass-card" style={{
-            background: 'rgba(255,255,255,0.13)',
-            borderRadius: '32px',
-            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            padding: '40px 32px',
-            minWidth: '320px',
-            maxWidth: '350px',
-            flex: '1 1 320px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          }}>
-            <div className="security-icon" style={{background: 'rgba(44,28,15,0.13)', borderRadius: '50%', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px'}}>
+          <div className="security-glass-card">
+            <div className="security-icon">
               {/* Lock icon */}
-              <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="none"/><path d="M8 11V9a4 4 0 1 1 8 0v2" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><rect x="6" y="11" width="12" height="7" rx="2" stroke="#fff" strokeWidth="1.5"/></svg>
+              <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="none"/><path d="M8 11V9a4 4 0 1 1 8 0v2" stroke="#ea580c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><rect x="6" y="11" width="12" height="7" rx="2" stroke="#ea580c" strokeWidth="1.5"/></svg>
             </div>
-            <h3 style={{color: '#fff', fontSize: '2rem', fontWeight: 700, margin: '0 0 12px 0'}}>Data protection</h3>
-            <p style={{color: '#fff', fontSize: '1.1rem', fontWeight: 400, margin: 0}}>We never sell your data to third parties. Period.</p>
+            <h3>All your data is encrypted</h3>
+            <p>With Lumeo, every piece of your information is protected by bank-level encryption—both in transit and at rest.</p>
           </div>
-          <div className="security-glass-card" style={{
-            background: 'rgba(255,255,255,0.13)',
-            borderRadius: '32px',
-            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.18)',
-            padding: '40px 32px',
-            minWidth: '320px',
-            maxWidth: '350px',
-            flex: '1 1 320px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          }}>
-            <div className="security-icon" style={{background: 'rgba(44,28,15,0.13)', borderRadius: '50%', width: '48px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px'}}>
+          <div className="security-glass-card">
+            <div className="security-icon">
               {/* Read-only icon */}
-              <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="none"/><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="#fff" strokeWidth="1.5"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="#fff" strokeWidth="1.5"/></svg>
+              <svg width="40" height="40" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="none"/><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="#ea580c" strokeWidth="1.5"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="#ea580c" strokeWidth="1.5"/></svg>
             </div>
-            <h3 style={{color: '#fff', fontSize: '2rem', fontWeight: 700, margin: '0 0 12px 0'}}>Read-only mode</h3>
-            <p style={{color: '#fff', fontSize: '1.1rem', fontWeight: 400, margin: 0}}>Cleo can only view your transaction data in read-only mode. At no time can Cleo access your accounts.</p>
+            <h3>We don't save your data</h3>
+            <p>Lumeo never stores your sensitive information. Your data stays yours—private, secure, and never saved on our servers.</p>
           </div>
         </div>
       </div>
 
-      <FAQ />
+      <div className="bounce-in">
+        <FAQ />
+      </div>
     </div>
   );
 };

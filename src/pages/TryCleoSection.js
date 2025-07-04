@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import './TryCleoSection.css';
 
 const TryCleoSection = ({ active = true }) => {
   const sectionRef = useRef(null);
@@ -76,91 +77,34 @@ const TryCleoSection = ({ active = true }) => {
         }}
       />
 
-      {/* Floating Particles */}
-      {[...Array(12)].map((_, i) => (
-        <div
-          key={i}
-          className={`particle ${active && isVisible ? 'animate' : ''}`}
-          style={{
-            position: 'absolute',
-            width: `${Math.random() * 8 + 4}px`,
-            height: `${Math.random() * 8 + 4}px`,
-            background: '#f97316',
-            borderRadius: '50%',
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            opacity: 0,
-            transform: `translateY(50px) scale(0)`,
-            transition: `all ${1 + Math.random() * 0.5}s cubic-bezier(0.23, 1, 0.32, 1) ${Math.random() * 0.5}s`,
-            ...(active && isVisible && {
-              opacity: Math.random() * 0.6 + 0.2,
-              transform: `translateY(${-Math.random() * 30 - 10}px) scale(1)`,
-              animation: `float ${3 + Math.random() * 2}s ease-in-out infinite ${Math.random() * 2}s`,
-            })
-          }}
-        />
-      ))}
-
       {/* Main Content */}
       <div 
         className={`try-cleo-content ${active && isVisible ? 'animate' : ''}`}
         style={{
           position: 'relative',
           zIndex: 1,
-          textAlign: 'left',
-          margin: 0,
-          paddingLeft: '160px',
-          paddingTop: '100px',
-          paddingBottom: '100px',
-          width: '100%',
-          opacity: 0,
-          transform: 'translateY(60px) scale(0.95)',
+          opacity: active && isVisible ? 1 : 0,
+          transform: active && isVisible ? 'translateY(0) scale(1)' : 'translateY(60px) scale(0.95)',
           transition: 'all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s',
-          ...(active && isVisible && {
-            opacity: 1,
-            transform: 'translateY(0) scale(1)',
-          })
         }}
       >
-        <h1 style={{
-          fontSize: '5rem',
-          fontWeight: 900,
-          margin: 0,
-          lineHeight: 1.05,
-          color: '#F97316',
-          letterSpacing: '-0.01em',
+        <h1 className={`try-cleo-title${active && isVisible ? ' try-cleo-fadein' : ''}`} style={{
+          animationDelay: '0.1s',
+          animationDuration: '0.7s',
         }}>
           Try Lumeo now
         </h1>
-        <p style={{
-          fontSize: '2.2rem',
-          fontWeight: 700,
-          margin: '32px 0 48px 0',
-          color: '#F97316',
-          lineHeight: 1.2,
-          maxWidth: '700px',
+        <p className={`try-cleo-desc${active && isVisible ? ' try-cleo-fadein' : ''}`} style={{
+          animationDelay: '0.3s',
+          animationDuration: '0.7s',
         }}>
           Join the revolution of finance with <br />Lumeo— the future of all things money.
         </p>
-        <button 
-          className={`try-cleo-btn ${active && isVisible ? 'animate' : ''}`}
+        <button
+          className={`try-cleo-btn${active && isVisible ? ' try-cleo-fadein' : ''}`.replace('try-cleo-btntry-cleo-fadein', 'try-cleo-btn try-cleo-fadein')}
           style={{
-            position: 'relative',
-            overflow: 'hidden',
-            background: 'linear-gradient(135deg, #fd9e00, #fcba36, #fdc557)',
-            backgroundSize: '200% 200%',
-            color: '#44221c',
-            fontSize: '1.5rem',
-            fontWeight: 700,
-            border: 'none',
-            borderRadius: '32px',
-            padding: '22px 64px',
-            cursor: 'pointer',
-            boxShadow: `0 8px 25px rgba(253, 158, 0, 0.18), 0 4px 15px rgba(252, 186, 54, 0.13)`,
-            marginTop: '16px',
-            opacity: 1,
-            transform: 'none',
-            transition: 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.9s',
+            animationDelay: '0.5s',
+            animationDuration: '0.7s',
           }}
           onClick={handleGetStartedClick}
         >
@@ -207,21 +151,6 @@ const TryCleoSection = ({ active = true }) => {
       )}
 
       <style jsx>{`
-        @keyframes float {
-          0%, 100% { 
-            transform: translateY(0) translateX(0) rotate(0deg);
-          }
-          25% { 
-            transform: translateY(-20px) translateX(10px) rotate(90deg);
-          }
-          50% { 
-            transform: translateY(-35px) translateX(-5px) rotate(180deg);
-          }
-          75% { 
-            transform: translateY(-15px) translateX(-15px) rotate(270deg);
-          }
-        }
-
         @keyframes titleGlow {
           0%, 100% {
             text-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
@@ -288,6 +217,14 @@ const TryCleoSection = ({ active = true }) => {
               0 6px 20px rgba(252, 186, 54, 0.18),
               inset 0 1px 0 rgba(255, 255, 255, 0.2);
           }
+        }
+
+        @keyframes tryCleoFadeIn {
+          0% { opacity: 0; transform: translateY(40px) scale(0.97); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .try-cleo-fadein {
+          animation: tryCleoFadeIn 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
         }
 
         @media (max-width: 900px) {

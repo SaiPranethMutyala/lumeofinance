@@ -104,12 +104,19 @@ m.products-page {
     color: #ea580c;
     text-align: center;
     padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .join-section .stars {
     color: #ea580c;
     font-size: 28px;
     margin-bottom: 20px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
 }
 
 .join-section h3 {
@@ -117,14 +124,19 @@ m.products-page {
     font-size: 32px;
     margin-bottom: 20px;
     font-weight: bold;
+    line-height: 1.2;
 }
 
 .join-section p {
     color: #ea580c;
     font-size: 16px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    max-width: 600px;
 }
 
 .store-button {
@@ -139,11 +151,74 @@ m.products-page {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .store-button:hover {
     background-color: #d0d0d0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+}
+
+/* Should Money Be Social Section Responsive Styles */
+.should-money-be-social-section {
+    min-height: 101vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: url('../../public/images/p69.PNG') center center / cover no-repeat;
+    margin: 48px 0;
+    text-align: left;
+    box-shadow: 0 4px 32px rgba(255, 167, 38, 0.07);
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.should-money-be-social-section .content-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 54%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 2;
+    padding: 0 0 0 64px;
+}
+
+.should-money-be-social-section .content-card {
+    background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0.32) 100%);
+    backdrop-filter: blur(18px);
+    border-radius: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    padding: 32px 32px;
+    max-width: 500px;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 500px;
+    margin-left: -30px;
+}
+
+.should-money-be-social-section .content-card h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 0;
+    color: #fff;
+    line-height: 1.08;
+}
+
+.should-money-be-social-section .content-card p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 24px 0 0 0;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 .smarter-budgeting-section {
@@ -169,7 +244,7 @@ m.products-page {
 
 .image-content {
     flex: 1;
-    height: 400px;
+    height: 500px;
     border-radius: 20px;
     background-color: #e0e0e0;
     will-change: auto;
@@ -229,7 +304,16 @@ m.products-page {
     margin: 0;
 }
 
-
+.set-spending-limit-section .text-content,
+.stay-ahead-section .text-content,
+.get-real-answers-section .text-content,
+.challenge-yourself-section .text-content {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 /* Add styling for stay-ahead-image */
 .stay-ahead-section .stay-ahead-image {
@@ -456,6 +540,8 @@ m.products-page {
 }
 
 .security-section {
+    position: relative;
+    z-index: 1;
     background: linear-gradient(90deg, #f7b37a 0%, #f7d6b2 100%);
     padding: 70px 0 84px 0;
     min-height: 70vh;
@@ -466,84 +552,162 @@ m.products-page {
     justify-content: flex-start;
 }
 
-.security-section h2 {
-    color: #2c1c0f;
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 60px;
-    text-align: left;
-    width: 80%;
-    max-width: 1200px;
-    align-self: flex-start;
+.security-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    opacity: 1;
+    pointer-events: none;
 }
 
-.security-grid {
+.security-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(247,179,122,0.22) 0%, rgba(247,214,178,0.22) 100%);
+    pointer-events: none;
+}
+
+.security-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.security-section h2,
+.security-section h3 {
+    color: #ea580c !important;
+}
+
+.security-glass-grid {
     display: flex;
-    flex-direction: row;
-    gap: 48px;
+    gap: 32px;
     justify-content: center;
-    align-items: stretch;
-    width: 80%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 auto;
     max-width: 1200px;
 }
 
-.security-card {
-    background: rgba(255,255,255,0.28);
-    border-radius: 28px;
-    box-shadow: 0 8px 32px 0 rgba(44,28,15,0.10);
-    padding: 48px 36px 40px 36px;
-    flex: 1 1 0;
-    min-width: 280px;
-    max-width: 400px;
+.security-glass-card {
+    background: rgba(255,255,255,0.92) !important;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 40px 32px;
+    min-width: 320px;
+    max-width: 350px;
+    flex: 1 1 320px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
-    position: relative;
-    transition: box-shadow 0.2s;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s;
+    animation: scaleIn 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-.security-card .security-icon {
-    width: 56px;
-    height: 56px;
+.security-glass-card:hover {
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(249, 115, 22, 0.15);
+}
+
+.security-glass-card h3 {
+    color: #ea580c !important;
+}
+
+.security-glass-card p {
+    color: #4a2a1c !important;
+}
+
+.security-icon {
+    background: #fff !important;
+    border: 1.5px solid #e0b97a !important;
     border-radius: 50%;
-    background: rgba(44,28,15,0.10);
+    width: 48px !important;
+    height: 48px !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    margin-bottom: 32px;
+    margin-bottom: 18px !important;
+    box-shadow: 0 2px 8px rgba(44,28,15,0.08);
 }
 
-.security-card h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 18px 0;
-    color: #fff;
-    line-height: 1.1;
+@media (max-width: 900px) {
+    .security-section h2 {
+        font-size: 2.1rem !important;
+        margin-left: 4vw !important;
+    }
+    .security-glass-grid {
+        gap: 18px;
+        max-width: 98vw;
+    }
+    .security-glass-card {
+        min-width: 260px;
+        max-width: 320px;
+        padding: 28px 16px;
+    }
 }
 
-.security-card p {
-    font-size: 1.1rem;
-    color: #fff;
-    margin: 0;
-    font-weight: 400;
-    line-height: 1.5;
-}
-
-@media (max-width: 1100px) {
-    .security-grid {
-        flex-direction: column;
-        gap: 32px;
-        width: 95%;
-        align-items: center;
+@media (max-width: 600px) {
+    .security-section {
+        padding: 40px 0 !important;
     }
     .security-section h2 {
-        font-size: 2.2rem;
-        width: 95%;
+        font-size: 1.3rem !important;
+        margin-left: 2vw !important;
+        margin-bottom: 24px !important;
+    }
+    .security-glass-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        overflow-x: visible;
+    }
+    .security-glass-card {
+        min-width: 95vw;
+        max-width: 98vw;
+        padding: 18px 6px;
+        border-radius: 18px;
+        font-size: 14px;
+        align-items: flex-start;
+    }
+    .security-glass-card h3 {
+        font-size: 1.1rem !important;
+    }
+    .security-glass-card p {
+        font-size: 0.95rem !important;
+    }
+    .security-icon {
+        width: 36px !important;
+        height: 36px !important;
+        margin-bottom: 10px !important;
     }
 }
+
+@media (max-width: 400px) {
+    .security-glass-card {
+        min-width: 98vw;
+        max-width: 99vw;
+        padding: 8px 2px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    .security-glass-card h3 {
+        font-size: 0.9rem !important;
+    }
+    .security-glass-card p {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* DEBUG: Force security-glass-grid visible */
+.security-glass-grid { opacity: 1 !important; transform: none !important; }
 
 /* Optimized animation styles */
 .general-animation-styles,
@@ -611,14 +775,14 @@ m.products-page {
     transform: none;
 }
 
-.security-section .security-grid {
+.security-section .security-glass-grid {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     will-change: opacity, transform;
 }
 
-.security-section .security-grid.visible {
+.security-section .security-glass-grid.visible {
     opacity: 1;
     transform: none;
 }
@@ -698,10 +862,97 @@ m.products-page {
         margin-left: 0;
         padding: 18px;
     }
+    .smarter-budgeting-section {
+        padding: 60px 6vw;
+        margin-top: -60px !important;
+    }
+    
+    .smarter-budgeting-section .image-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 400px !important;
+        border-radius: 24px !important;
+        margin-top: 0 !important;
+    }
+    
+    .smarter-budgeting-section .text-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-width: 0 !important;
+        padding: 40px 32px !important;
+        border-radius: 24px !important;
+        margin-top: 24px !important;
+    }
+    
+    .smarter-budgeting-section .text-content h3 {
+        font-size: clamp(2.2rem, 7vw, 2.6rem) !important;
+        margin: 0 0 20px 0 !important;
+        text-align: center !important;
+        align-self: center !important;
+    }
+    
+    .smarter-budgeting-section .text-content p {
+        font-size: clamp(1.1rem, 4.5vw, 1.25rem) !important;
+        margin: 20px 0 0 0 !important;
+        text-align: center !important;
+        align-self: center !important;
+    }
+    
+    .should-money-be-social-section {
+        min-height: 80vh;
+        margin: 32px 0;
+        border-radius: 24px;
+    }
+    
+    .should-money-be-social-section .content-overlay {
+        width: 60%;
+        padding: 0 0 0 40px;
+    }
+    
+    .should-money-be-social-section .content-card {
+        padding: 24px 24px;
+        border-radius: 24px;
+        margin-top: 300px;
+        margin-left: -20px;
+        max-width: 400px;
+    }
+    
+    .should-money-be-social-section .content-card h1 {
+        font-size: clamp(1.8rem, 6vw, 2rem);
+    }
+    
+    .should-money-be-social-section .content-card p {
+        font-size: clamp(1rem, 4vw, 1.1rem);
+        margin: 16px 0 0 0;
+    }
+    
     .smarter-budgeting-section h2 {
         font-size: 1.5rem;
         margin-left: 0;
         text-align: center;
+    }
+    
+    .set-spending-limit-section,
+    .stay-ahead-section,
+    .get-real-answers-section,
+    .challenge-yourself-section {
+        padding: 60px 6vw;
+    }
+    
+    .set-spending-limit-section h3,
+    .stay-ahead-section h3,
+    .get-real-answers-section h3,
+    .challenge-yourself-section h3 {
+        font-size: clamp(2rem, 6vw, 2.3rem);
+        margin-bottom: 24px;
+    }
+    
+    .set-spending-limit-section p,
+    .stay-ahead-section p,
+    .get-real-answers-section p,
+    .challenge-yourself-section p {
+        font-size: clamp(1rem, 4vw, 1.1rem);
     }
     .content-wrapper {
         flex-direction: column;
@@ -710,9 +961,9 @@ m.products-page {
     }
     .image-content {
         width: 100%;
-        height: 220px;
+        height: 350px;
         min-width: 0;
-        min-height: 120px;
+        min-height: 300px;
         border-radius: 12px;
     }
     .text-content {
@@ -749,15 +1000,121 @@ m.products-page {
     }
     .join-section {
         padding: 32px 4vw;
+        gap: 16px;
+    }
+    
+    .join-section .stars {
+        font-size: 24px;
+        gap: 6px;
+    }
+    
+    .join-section h3 {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+    
+    .join-section p {
+        font-size: 14px;
+        gap: 12px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .store-button {
+        padding: 8px 16px;
+        font-size: 14px;
     }
     .smarter-budgeting-section {
         padding: 32px 4vw;
+        margin-top: -40px !important;
+    }
+    
+    .smarter-budgeting-section .image-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 300px !important;
+        border-radius: 20px !important;
+        margin-top: 0 !important;
+    }
+    
+    .smarter-budgeting-section .text-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-width: 0 !important;
+        padding: 24px 16px !important;
+        border-radius: 20px !important;
+        margin-top: 16px !important;
+    }
+    
+    .smarter-budgeting-section .text-content h3 {
+        font-size: clamp(1.8rem, 6vw, 2.2rem) !important;
+        margin: 0 0 16px 0 !important;
+        text-align: center !important;
+        align-self: center !important;
+    }
+    
+    .smarter-budgeting-section .text-content p {
+        font-size: clamp(1rem, 4vw, 1.1rem) !important;
+        margin: 16px 0 0 0 !important;
+        text-align: center !important;
+        align-self: center !important;
+    }
+    
+    .should-money-be-social-section {
+        min-height: 70vh;
+        margin: 24px 0;
+        border-radius: 20px;
+    }
+    
+    .should-money-be-social-section .content-overlay {
+        width: 70%;
+        padding: 0 0 0 24px;
+    }
+    
+    .should-money-be-social-section .content-card {
+        padding: 20px 20px;
+        border-radius: 20px;
+        margin-top: 200px;
+        margin-left: -15px;
+        max-width: 350px;
+    }
+    
+    .should-money-be-social-section .content-card h1 {
+        font-size: clamp(1.6rem, 7vw, 1.8rem);
+    }
+    
+    .should-money-be-social-section .content-card p {
+        font-size: clamp(0.9rem, 4.5vw, 1rem);
+        margin: 12px 0 0 0;
     }
     .smarter-budgeting-section h2 {
         font-size: clamp(1.2rem, 6vw, 1.5rem);
         margin-bottom: 24px;
         margin-left: 0;
         text-align: center;
+    }
+    
+    .set-spending-limit-section,
+    .stay-ahead-section,
+    .get-real-answers-section,
+    .challenge-yourself-section {
+        padding: 40px 4vw;
+    }
+    
+    .set-spending-limit-section h3,
+    .stay-ahead-section h3,
+    .get-real-answers-section h3,
+    .challenge-yourself-section h3 {
+        font-size: clamp(1.8rem, 7vw, 2rem);
+        margin-bottom: 20px;
+    }
+    
+    .set-spending-limit-section p,
+    .stay-ahead-section p,
+    .get-real-answers-section p,
+    .challenge-yourself-section p {
+        font-size: clamp(0.9rem, 4.5vw, 1rem);
     }
     .content-wrapper {
         flex-direction: column;
@@ -766,9 +1123,9 @@ m.products-page {
     }
     .image-content {
         width: 100%;
-        height: 160px;
+        height: 300px;
         min-width: 0;
-        min-height: 80px;
+        min-height: 250px;
         border-radius: 10px;
     }
     .text-content {
@@ -794,13 +1151,111 @@ m.products-page {
     }
     .join-section {
         padding: 18px 2vw;
+        gap: 12px;
     }
+    
+    .join-section .stars {
+        font-size: 20px;
+        gap: 4px;
+        margin-bottom: 12px;
+    }
+    
+    .join-section h3 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .join-section p {
+        font-size: 13px;
+        gap: 8px;
+    }
+    
+    .store-button {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    .smarter-budgeting-section {
+        padding: 16px 2vw;
+        margin-top: -20px !important;
+    }
+    
+    .smarter-budgeting-section .image-content {
+        height: 200px !important;
+        border-radius: 16px !important;
+    }
+    
+    .smarter-budgeting-section .text-content {
+        padding: 20px 12px !important;
+        border-radius: 16px !important;
+        margin-top: 12px !important;
+    }
+    
+    .smarter-budgeting-section .text-content h3 {
+        font-size: clamp(1.5rem, 7vw, 1.8rem) !important;
+        margin: 0 0 12px 0 !important;
+    }
+    
+    .smarter-budgeting-section .text-content p {
+        font-size: clamp(0.9rem, 4.5vw, 1rem) !important;
+        margin: 12px 0 0 0 !important;
+    }
+    
+    .set-spending-limit-section,
+    .stay-ahead-section,
+    .get-real-answers-section,
+    .challenge-yourself-section {
+        padding: 24px 2vw;
+    }
+    
+    .set-spending-limit-section h3,
+    .stay-ahead-section h3,
+    .get-real-answers-section h3,
+    .challenge-yourself-section h3 {
+        font-size: clamp(1.6rem, 8vw, 1.8rem);
+        margin-bottom: 16px;
+    }
+    
+    .set-spending-limit-section p,
+    .stay-ahead-section p,
+    .get-real-answers-section p,
+    .challenge-yourself-section p {
+        font-size: clamp(0.8rem, 5vw, 0.9rem);
+    }
+    
+    .should-money-be-social-section {
+        min-height: 60vh;
+        margin: 16px 0;
+        border-radius: 16px;
+    }
+    
+    .should-money-be-social-section .content-overlay {
+        width: 85%;
+        padding: 0 0 0 16px;
+    }
+    
+    .should-money-be-social-section .content-card {
+        padding: 16px 16px;
+        border-radius: 16px;
+        margin-top: 150px;
+        margin-left: -10px;
+        max-width: 300px;
+    }
+    
+    .should-money-be-social-section .content-card h1 {
+        font-size: clamp(1.4rem, 8vw, 1.6rem);
+    }
+    
+    .should-money-be-social-section .content-card p {
+        font-size: clamp(0.8rem, 5vw, 0.9rem);
+        margin: 10px 0 0 0;
+    }
+    
     .smarter-budgeting-section h2 {
         font-size: clamp(1rem, 7vw, 1.2rem);
         margin-bottom: 12px;
     }
     .image-content {
-        height: 90px;
+        height: 250px;
         border-radius: 6px;
     }
 }
@@ -823,14 +1278,224 @@ m.products-page {
     }
     .join-section {
         padding: 8px 1vw;
+        gap: 8px;
     }
+    
+    .join-section .stars {
+        font-size: 16px;
+        gap: 3px;
+        margin-bottom: 8px;
+    }
+    
+    .join-section h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+    
+    .join-section p {
+        font-size: 12px;
+        gap: 6px;
+    }
+    
+    .store-button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    .smarter-budgeting-section {
+        padding: 8px 1vw;
+        margin-top: -10px !important;
+    }
+    
+    .smarter-budgeting-section .image-content {
+        height: 150px !important;
+        border-radius: 12px !important;
+    }
+    
+    .smarter-budgeting-section .text-content {
+        padding: 16px 8px !important;
+        border-radius: 12px !important;
+        margin-top: 8px !important;
+    }
+    
+    .smarter-budgeting-section .text-content h3 {
+        font-size: clamp(1.2rem, 8vw, 1.5rem) !important;
+        margin: 0 0 8px 0 !important;
+    }
+    
+    .smarter-budgeting-section .text-content p {
+        font-size: clamp(0.8rem, 5vw, 0.9rem) !important;
+        margin: 8px 0 0 0 !important;
+    }
+    
+    .set-spending-limit-section,
+    .stay-ahead-section,
+    .get-real-answers-section,
+    .challenge-yourself-section {
+        padding: 16px 1vw;
+    }
+    
+    .set-spending-limit-section h3,
+    .stay-ahead-section h3,
+    .get-real-answers-section h3,
+    .challenge-yourself-section h3 {
+        font-size: clamp(1.4rem, 9vw, 1.6rem);
+        margin-bottom: 12px;
+    }
+    
+    .set-spending-limit-section p,
+    .stay-ahead-section p,
+    .get-real-answers-section p,
+    .challenge-yourself-section p {
+        font-size: clamp(0.7rem, 5.5vw, 0.8rem);
+    }
+    
+    .should-money-be-social-section {
+        min-height: 50vh;
+        margin: 12px 0;
+        border-radius: 12px;
+    }
+    
+    .should-money-be-social-section .content-overlay {
+        width: 95%;
+        padding: 0 0 0 12px;
+    }
+    
+    .should-money-be-social-section .content-card {
+        padding: 12px 12px;
+        border-radius: 12px;
+        margin-top: 100px;
+        margin-left: -8px;
+        max-width: 250px;
+    }
+    
+    .should-money-be-social-section .content-card h1 {
+        font-size: clamp(1.2rem, 9vw, 1.4rem);
+    }
+    
+    .should-money-be-social-section .content-card p {
+        font-size: clamp(0.7rem, 5.5vw, 0.8rem);
+        margin: 8px 0 0 0;
+    }
+    
     .smarter-budgeting-section h2 {
         font-size: clamp(0.8rem, 8vw, 1rem);
         margin-bottom: 6px;
     }
     .image-content {
-        height: 50px;
+        height: 200px;
         border-radius: 3px;
+    }
+}
+
+@media (max-width: 320px) {
+    .join-section {
+        padding: 6px 0.5vw;
+        gap: 6px;
+    }
+    
+    .join-section .stars {
+        font-size: 14px;
+        gap: 2px;
+        margin-bottom: 6px;
+    }
+    
+    .join-section h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    
+    .join-section p {
+        font-size: 11px;
+        gap: 4px;
+        flex-direction: column;
+    }
+    
+    .store-button {
+        padding: 4px 8px;
+        font-size: 11px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .smarter-budgeting-section {
+        padding: 4px 0.5vw;
+        margin-top: -5px !important;
+    }
+    
+    .smarter-budgeting-section .image-content {
+        height: 120px !important;
+        border-radius: 8px !important;
+    }
+    
+    .image-content {
+        height: 160px;
+        border-radius: 3px;
+    }
+    
+    .smarter-budgeting-section .text-content {
+        padding: 12px 6px !important;
+        border-radius: 8px !important;
+        margin-top: 6px !important;
+    }
+    
+    .smarter-budgeting-section .text-content h3 {
+        font-size: clamp(1rem, 9vw, 1.2rem) !important;
+        margin: 0 0 6px 0 !important;
+    }
+    
+    .smarter-budgeting-section .text-content p {
+        font-size: clamp(0.7rem, 5.5vw, 0.8rem) !important;
+        margin: 6px 0 0 0 !important;
+    }
+    
+    .should-money-be-social-section {
+        min-height: 40vh;
+        margin: 8px 0;
+        border-radius: 8px;
+    }
+    
+    .should-money-be-social-section .content-overlay {
+        width: 100%;
+        padding: 0 0 0 8px;
+    }
+    
+    .should-money-be-social-section .content-card {
+        padding: 8px 8px;
+        border-radius: 8px;
+        margin-top: 80px;
+        margin-left: -5px;
+        max-width: 200px;
+    }
+    
+    .should-money-be-social-section .content-card h1 {
+        font-size: clamp(1rem, 10vw, 1.2rem);
+    }
+    
+    .should-money-be-social-section .content-card p {
+        font-size: clamp(0.6rem, 6vw, 0.7rem);
+        margin: 6px 0 0 0;
+    }
+    
+    .set-spending-limit-section,
+    .stay-ahead-section,
+    .get-real-answers-section,
+    .challenge-yourself-section {
+        padding: 12px 0.5vw;
+    }
+    
+    .set-spending-limit-section h3,
+    .stay-ahead-section h3,
+    .get-real-answers-section h3,
+    .challenge-yourself-section h3 {
+        font-size: clamp(1.2rem, 10vw, 1.4rem);
+        margin-bottom: 8px;
+    }
+    
+    .set-spending-limit-section p,
+    .stay-ahead-section p,
+    .get-real-answers-section p,
+    .challenge-yourself-section p {
+        font-size: clamp(0.6rem, 6vw, 0.7rem);
     }
 }
 
@@ -857,4 +1522,68 @@ m.products-page {
 @keyframes fadeInUp {
     0% { opacity: 0; transform: translateY(60px); }
     100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced Animations */
+@keyframes scaleIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.scale-in {
+  animation: scaleIn 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+.bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.staggered-list li {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s forwards;
+}
+.staggered-list li:nth-child(1) { animation-delay: 0.1s; }
+.staggered-list li:nth-child(2) { animation-delay: 0.25s; }
+.staggered-list li:nth-child(3) { animation-delay: 0.4s; }
+.staggered-list li:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+.pulse {
+  animation: pulse 1.2s infinite;
+}
+
+.pop-on-hover {
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s;
+}
+.pop-on-hover:hover {
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 12px 32px rgba(249, 115, 22, 0.15);
+}
+
+@media (min-width: 1100px) {
+    .image-content {
+        height: 700px;
+        min-height: 600px;
+    }
+    .set-spending-limit-section h3,
+    .stay-ahead-section h3,
+    .get-real-answers-section h3,
+    .challenge-yourself-section h3 {
+        font-size: 3.25rem;
+    }
+    .set-spending-limit-section p,
+    .stay-ahead-section p,
+    .get-real-answers-section p,
+    .challenge-yourself-section p {
+        font-size: 1.5rem;
+    }
 } 
